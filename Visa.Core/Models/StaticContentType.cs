@@ -9,9 +9,9 @@ namespace Visa.Core.Models
     {
         public int Id { get; set; }
         [MaxLength(600)]
-        public string Name { get; set; }
+        public string Identifier { get; set; }
         [MaxLength(600)]
-        public string LocalName { get; set; }
+        public string Name { get; set; }
         public ICollection<StaticContentDetail> StaticContentDetails { get; set; }
     }
 }

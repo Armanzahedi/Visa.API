@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Visa.Infrastructure;
 
 namespace Visa.Infrastructure.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201026084913_added-seed-data")]
+    partial class addedseeddata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,14 +51,14 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = "29bd76db-5835-406d-ad1d-7a0901447c18",
-                            ConcurrencyStamp = "aa268b5e-5a69-42e1-9320-7b96a362bad9",
+                            ConcurrencyStamp = "3e86f118-920d-4143-a1d1-adc589fc1f6e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "d7be43da-622c-4cfe-98a9-5a5161120d24",
-                            ConcurrencyStamp = "b9975cff-02b3-4e8e-8f79-5269274ad6bc",
+                            ConcurrencyStamp = "5c5b43ff-cced-45c6-a333-14e8cfb50445",
                             Name = "Author",
                             NormalizedName = "AUTHOR"
                         });
@@ -214,7 +216,7 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AddedDate = new DateTime(2020, 10, 26, 15, 40, 36, 898, DateTimeKind.Local).AddTicks(2200),
+                            AddedDate = new DateTime(2020, 10, 26, 12, 19, 12, 131, DateTimeKind.Local).AddTicks(5512),
                             ArticleCategoryId = 1,
                             Description = "نحوه گرفتن اقامت رایگان",
                             Title = "نحوه گرفتن اقامت رایگان",
@@ -311,7 +313,7 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AddedDate = new DateTime(2020, 10, 26, 15, 40, 36, 905, DateTimeKind.Local).AddTicks(4850),
+                            AddedDate = new DateTime(2020, 10, 26, 12, 19, 12, 139, DateTimeKind.Local).AddTicks(4222),
                             ArticleId = 1,
                             Email = "User@Comment.com",
                             Message = "This is a test comment",
@@ -320,7 +322,7 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            AddedDate = new DateTime(2020, 10, 26, 15, 40, 36, 905, DateTimeKind.Local).AddTicks(6129),
+                            AddedDate = new DateTime(2020, 10, 26, 12, 19, 12, 139, DateTimeKind.Local).AddTicks(5296),
                             ArticleId = 1,
                             Email = "User2@Comment.com",
                             Message = "This is a test comment reply",
@@ -395,339 +397,6 @@ namespace Visa.Infrastructure.Migrations
                             Id = 1,
                             ArticleId = 1,
                             Title = "Test Tag"
-                        });
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.ContactForm", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(600)")
-                        .HasMaxLength(600);
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(600)")
-                        .HasMaxLength(600);
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(600)")
-                        .HasMaxLength(600);
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("ContactForms");
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.Faq", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Answer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Faq");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Answer = "An Interior Designer is a trained professional who creates and designs interior spaces which are aesthetically attractive and functional.An Interior Decorator, on the other hand, views interior design with a largely cosmetic approach using decorative elements to merely rearrange existing spaces.",
-                            Question = "What is your company philosophy?"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Answer = "An Interior Designer is a trained professional who creates and designs interior spaces which are aesthetically attractive and functional.An Interior Decorator, on the other hand, views interior design with a largely cosmetic approach using decorative elements to merely rearrange existing spaces.",
-                            Question = "What did you do to make it a success?"
-                        });
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.Gallery", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Galleries");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Image = "gallery-img1.jpg",
-                            Title = "Gallery Image 1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Image = "gallery-img2.jpg",
-                            Title = "Gallery Image 2"
-                        });
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.OurTeam", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Facebook")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Google")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Linkedin")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Twitter")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OurTeams");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Image = "our-team-img-1.jpg",
-                            Name = "NOUR ELDIN",
-                            Role = "CEO & FOUNDER"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Image = "our-team-img-2.jpg",
-                            Name = "LES WILLIAMS",
-                            Role = "CEO & FOUNDER"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Image = "our-team-img-3.jpg",
-                            Name = "SARA STEWART",
-                            Role = "CEO & FOUNDER"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Image = "our-team-img-4.jpg",
-                            Name = "EMY JACMAN",
-                            Role = "CEO & FOUNDER"
-                        });
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.Partner", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Partners");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Image = "partner-1.png",
-                            Title = "ThemeForest"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Image = "partner-2.png",
-                            Title = "Audio Jungle"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Image = "partner-3.png",
-                            Title = "Codcanyon"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Image = "partner-4.png",
-                            Title = "Graphic River"
-                        });
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.Service", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("File")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShortDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Thumbnail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(600)")
-                        .HasMaxLength(600);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Services");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "503 Old Buffalo Street Northwest#205, New York-3087",
-                            Description = "We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleas ure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrink ing from toil and pain.",
-                            Email = "info@sbtechnosoft.com",
-                            File = "dummy.pdf",
-                            FileInfo = "Impress clients new and existing with elite construction brochures. Impress clients new and existing with elite construction.",
-                            Image = "services-details.jpg",
-                            Phone = "+0123-505-6789",
-                            ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-                            Thumbnail = "service-icon1.png",
-                            Title = "SEO"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Image = "service-icon2.png",
-                            ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-                            Title = "Content Marketing"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Image = "service-icon3.png",
-                            ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-                            Title = "Data Analysis"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Image = "service-icon4.png",
-                            ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-                            Title = "Digital Marketing"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Image = "service-icon5.png",
-                            ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-                            Title = "Web Analytics"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Image = "service-icon6.png",
-                            ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-                            Title = "Social Marketing"
-                        });
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.ServiceInclude", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ServcieId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(700)")
-                        .HasMaxLength(700);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("ServiceIncludes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleas ure of the moment, so blinded by desire, that they cannot foresee the pain and the trouble that are bound to ensue; and equal blame belongs to those who fail demoralized by the charms in their duty through the weakness of will so blinded by desire",
-                            ServcieId = 1,
-                            Title = "Social Marketing"
                         });
                 });
 
@@ -832,36 +501,6 @@ namespace Visa.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Visa.Core.Models.Testimonial", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rate")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Speaker")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Testimonials");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Message = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                            Rate = 5,
-                            Speaker = "Ariana Hedge CEO, Devrise"
-                        });
-                });
-
             modelBuilder.Entity("Visa.Core.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -945,7 +584,7 @@ namespace Visa.Infrastructure.Migrations
                         {
                             Id = "75625814-138e-4831-a1ea-bf58e211adff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bdc68b0c-6f7a-410e-9918-ad9c005661d2",
+                            ConcurrencyStamp = "b3fc1009-ecd5-4054-a479-03807708b178",
                             Email = "Admin@Admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -953,9 +592,9 @@ namespace Visa.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFZnd9VxpHPQ9nFC8W1QAqoW9oqQxNQUlsvzwv9TcnZzxD9Ot60tbUiKcRyIb+ot6A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENlhHEQ8LiPv/V7YU/af3gSwwEc0QqBfwoRV0pMFTvBUspoo9wczVskhZmeYshWTOg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "41029199-109a-496a-98f1-c4a4cfb43748",
+                            SecurityStamp = "3fa46fba-9901-499c-bb7c-42d10fa7b4ac",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -1052,22 +691,6 @@ namespace Visa.Infrastructure.Migrations
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.ContactForm", b =>
-                {
-                    b.HasOne("Visa.Core.Models.Service", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Visa.Core.Models.ServiceInclude", b =>
-                {
-                    b.HasOne("Visa.Core.Models.Service", "Service")
-                        .WithMany("ServiceIncludes")
-                        .HasForeignKey("ServiceId");
                 });
 
             modelBuilder.Entity("Visa.Core.Models.StaticContentDetail", b =>

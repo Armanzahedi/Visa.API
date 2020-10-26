@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Visa.Core.Models;
+using Visa.Infrastructure.Dtos.StaticContent;
 using Visa.Infrastructure.Filters;
 using Visa.Infrastructure.Helpers;
 using Visa.Infrastructure.Repositories;
@@ -38,48 +39,69 @@ namespace Visa.API.Controllers
             return Ok(pagedReponse);
         }
 
+        //[HttpGet]
+        //[Route("{id:int?}")]
+        //[Route("{identifier}")]
+        //public async Task<IActionResult> Get(int? id,string identifier)
+        //{
+        //    StaticContentType contentType;
+        //    if (id != null)
+        //        contentType = await _repo.Get(id.Value);
+        //    else
+        //        contentType = await _repo.Get(identifier);
+
+        //    if (contentType == null)
+        //        return StatusCode(StatusCodes.Status500InternalServerError, new Response<StaticContentType>() { Succeeded = false, Message = "محتوا پیدا نشد" });
+
+
+        //    return Ok(new Response<StaticContentType>(contentType));
+        //}
         [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [Route("{id:int?}")]
+        [Route("{identifier}")]
+        public async Task<IActionResult> GetContentDetailsList(int? id,string identifier)
         {
+            List<ContentDetailDto> contentDetails;
+            if (id != null)
+                contentDetails = await _repo.GetContentDetailsList(id.Value);
+            else
+                contentDetails = await _repo.GetContentDetailsList(identifier);
 
-            var contentType = await _repo.Get(id);
-            if (contentType == null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response<ArticleCategory>() { Succeeded = false, Message = "محتوا پیدا نشد" });
+            if (contentDetails == null || !contentDetails.Any())
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response<List<ContentDetailDto>>() { Succeeded = false, Message = "محتوا پیدا نشد" });
 
 
-            return Ok(new Response<StaticContentType>(contentType));
+            return Ok(new Response<List<ContentDetailDto>>(contentDetails));
         }
         [HttpGet]
-        [Route("{id}/ContentDetails")]
-        public async Task<IActionResult> GetContentByContentTypeId(int id)
+        [Route("ContentDetails/{id:int?}")]
+        [Route("{typeId:int?}/ContentDetails/{identifier}")]
+        [Route("{typeIdentifier}/ContentDetails/{identifier}")]
+        public async Task<IActionResult> GetContentDetail(int? typeId,string typeIdentifier,int? id, string identifier)
         {
+            ContentDetailDto contentDetail;
+            if (id != null)
+                contentDetail = await _repo.GetContentDetail(id.Value);
+            else
+            {
+                if(typeId != null)
+                    contentDetail = await _repo.GetContentDetail(typeId.Value, identifier);
+                else
+                    contentDetail = await _repo.GetContentDetail(typeIdentifier, identifier);
+            }
 
-            var contentDetails = await _repo.GetContentDetails(id);
-            if (contentDetails == null || !contentDetails.Any())
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response<StaticContentType>() { Succeeded = false, Message = "محتوا پیدا نشد" });
-
-
-            return Ok(new Response<List<StaticContentDetail>>(contentDetails));
-        }
-        [HttpGet]
-        [Route("ContentDetailsByContentName")]
-        public async Task<IActionResult> GetContentByContentTypeName(string name)
-        {
-
-            var contentDetails = await _repo.GetContentDetails(name);
-            if (contentDetails == null || !contentDetails.Any())
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response<StaticContentType>() { Succeeded = false, Message = "محتوا پیدا نشد" });
+            if (contentDetail == null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response<ContentDetailDto>() { Succeeded = false, Message = "محتوا پیدا نشد" });
 
 
-            return Ok(new Response<List<StaticContentDetail>>(contentDetails));
+            return Ok(new Response<ContentDetailDto>(contentDetail));
         }
         [HttpPost]
         public async Task<IActionResult> Create(StaticContentType model)
         {
             var result = await _repo.Add(model);
             if (result == null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response<ArticleCategory>() { Succeeded = false, Message = "ثبت محتوا با مشکل مواجه شد لطفا ورودی های خود را چک کرده و مجددا تلاش کنید" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response<StaticContentType>() { Succeeded = false, Message = "ثبت محتوا با مشکل مواجه شد لطفا ورودی های خود را چک کرده و مجددا تلاش کنید" });
 
 
             return Ok(new Response<StaticContentType>(result) { Message = "محتوا با موفقیت ثبت شد" });

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Visa.Core.Models
+namespace Visa.Infrastructure.Dtos.StaticContent
 {
-   public class StaticContentDetail : IBaseEntity
+    public class ContentDetailDto
     {
         public int Id { get; set; }
         [MaxLength(600)]
@@ -16,8 +16,5 @@ namespace Visa.Core.Models
         public string Description { get; set; }
         public string Image { get; set; }
         public string Link { get; set; }
-
-        public int StaticContentTypeId { get; set; }
-        public StaticContentType StaticContentType { get; set; }
     }
 }

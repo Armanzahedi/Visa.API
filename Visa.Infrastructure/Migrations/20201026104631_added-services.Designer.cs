@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Visa.Infrastructure;
 
 namespace Visa.Infrastructure.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201026104631_added-services")]
+    partial class addedservices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,14 +51,14 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = "29bd76db-5835-406d-ad1d-7a0901447c18",
-                            ConcurrencyStamp = "aa268b5e-5a69-42e1-9320-7b96a362bad9",
+                            ConcurrencyStamp = "aed4e18c-3b4f-47bb-9399-c249e11c2775",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "d7be43da-622c-4cfe-98a9-5a5161120d24",
-                            ConcurrencyStamp = "b9975cff-02b3-4e8e-8f79-5269274ad6bc",
+                            ConcurrencyStamp = "4b90b286-b2c0-4e90-a590-c40a846da593",
                             Name = "Author",
                             NormalizedName = "AUTHOR"
                         });
@@ -214,7 +216,7 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AddedDate = new DateTime(2020, 10, 26, 15, 40, 36, 898, DateTimeKind.Local).AddTicks(2200),
+                            AddedDate = new DateTime(2020, 10, 26, 14, 16, 29, 148, DateTimeKind.Local).AddTicks(5638),
                             ArticleCategoryId = 1,
                             Description = "نحوه گرفتن اقامت رایگان",
                             Title = "نحوه گرفتن اقامت رایگان",
@@ -311,7 +313,7 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            AddedDate = new DateTime(2020, 10, 26, 15, 40, 36, 905, DateTimeKind.Local).AddTicks(4850),
+                            AddedDate = new DateTime(2020, 10, 26, 14, 16, 29, 155, DateTimeKind.Local).AddTicks(1706),
                             ArticleId = 1,
                             Email = "User@Comment.com",
                             Message = "This is a test comment",
@@ -320,7 +322,7 @@ namespace Visa.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            AddedDate = new DateTime(2020, 10, 26, 15, 40, 36, 905, DateTimeKind.Local).AddTicks(6129),
+                            AddedDate = new DateTime(2020, 10, 26, 14, 16, 29, 155, DateTimeKind.Local).AddTicks(3032),
                             ArticleId = 1,
                             Email = "User2@Comment.com",
                             Message = "This is a test comment reply",
@@ -652,7 +654,7 @@ namespace Visa.Infrastructure.Migrations
                             Email = "info@sbtechnosoft.com",
                             File = "dummy.pdf",
                             FileInfo = "Impress clients new and existing with elite construction brochures. Impress clients new and existing with elite construction.",
-                            Image = "services-details.jpg",
+                            Image = "gallery-img1.jpg",
                             Phone = "+0123-505-6789",
                             ShortDescription = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
                             Thumbnail = "service-icon1.png",
@@ -945,7 +947,7 @@ namespace Visa.Infrastructure.Migrations
                         {
                             Id = "75625814-138e-4831-a1ea-bf58e211adff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bdc68b0c-6f7a-410e-9918-ad9c005661d2",
+                            ConcurrencyStamp = "ef199578-67c9-4afe-bba4-2e35279ff551",
                             Email = "Admin@Admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -953,9 +955,9 @@ namespace Visa.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFZnd9VxpHPQ9nFC8W1QAqoW9oqQxNQUlsvzwv9TcnZzxD9Ot60tbUiKcRyIb+ot6A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE1Nqh2grWdWP2IbLIyML+GQH69QV+wyvwDl5iECdhnfzzI04VcKxyEh/45+0ItqAQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "41029199-109a-496a-98f1-c4a4cfb43748",
+                            SecurityStamp = "258a62de-04e0-488d-8a35-e8d94ad7d0f7",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -1066,7 +1068,7 @@ namespace Visa.Infrastructure.Migrations
             modelBuilder.Entity("Visa.Core.Models.ServiceInclude", b =>
                 {
                     b.HasOne("Visa.Core.Models.Service", "Service")
-                        .WithMany("ServiceIncludes")
+                        .WithMany("serviceIncludes")
                         .HasForeignKey("ServiceId");
                 });
 
