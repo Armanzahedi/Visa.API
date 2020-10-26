@@ -48,7 +48,6 @@ namespace Visa.API.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Get(string id)
         {
 
@@ -60,7 +59,6 @@ namespace Visa.API.Controllers
             return Ok(new Response<UserDto>(user));
         }
         [HttpPost]
-        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> CreateUser(UserCreateDto model)
         {
             var userNameExists = await _repo.UserNameExists(model.UserName);
